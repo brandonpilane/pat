@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Fredoka", sans-serif;
+  color: whitesmoke;
+  text-align: center;
+  background-color: black;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+#sketch-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.1s ease; /* Smooth rotation */
+  /* filter: blur(rem */
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10rem;
+  text-align: center;
+  color: white;
+  font: 900;
+}
+
+canvas {
+  /* Optional: no stretching */
+  display: block;
+}
+
+.float-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+
+.float {
+  /* position: absolute; Position absolute within parent */
+  pointer-events: none; /* Prevents interaction */
+  outline: 1px solid blue;
+  will-change: transform;
+  animation: floating 30s ease-in-out infinite; /* Floating animation for each element */
+}
+
+/* A simple keyframe for random floating effect */
+@keyframes floating {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2rem, -2rem);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+h1 {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 5rem;
+  margin-top: 10rem;
+  color: #ff4081;
+}
+
+.section {
+  max-width: 85vw;
+  height: 100vh;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 5vw;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.grid-item {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(255, 11, 182, 0.068);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer {
+  padding: 4rem;
+  font-style: italic;
+  color: whitesmoke;
+  /* From botton to top gradient */
+  background: linear-gradient(
+    to top,
+    rgba(255, 0, 221, 0.082),
+    rgba(0, 0, 0, 0.1)
+  );
+}
