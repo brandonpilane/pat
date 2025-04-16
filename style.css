@@ -9,12 +9,10 @@ body {
   color: whitesmoke;
   text-align: center;
   background-color: black;
-  width: 100vw;
-  overflow-x: hidden;
 }
 
 #sketch-container {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -25,50 +23,11 @@ body {
   /* filter: blur(rem */
 }
 
-.text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10rem;
-  text-align: center;
-  color: white;
-  font: 900;
-}
-
 canvas {
   /* Optional: no stretching */
   display: block;
-}
-
-.float-wrapper {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: relative;
-}
-
-.float {
-  /* position: absolute; Position absolute within parent */
-  pointer-events: none; /* Prevents interaction */
-  outline: 1px solid blue;
-  will-change: transform;
-  animation: floating 30s ease-in-out infinite; /* Floating animation for each element */
-}
-
-/* A simple keyframe for random floating effect */
-@keyframes floating {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(2rem, -2rem);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
+  overflow: hidden;
+  max-width: 100vw;
 }
 
 h1 {
@@ -76,6 +35,8 @@ h1 {
   font-size: 5rem;
   margin-top: 10rem;
   color: #ff4081;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .section {
@@ -96,7 +57,7 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 16px;
   padding: 5vw;
-  max-width: 1400px;
+  max-width: 95vw;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -119,8 +80,9 @@ h1 {
 }
 
 .footer {
-  padding: 4rem;
+  padding-block: 4rem;
   font-style: italic;
+  font-weight: 100;
   color: whitesmoke;
   /* From botton to top gradient */
   background: linear-gradient(
@@ -128,6 +90,8 @@ h1 {
     rgba(255, 0, 221, 0.082),
     rgba(0, 0, 0, 0.1)
   );
+  width: 100%;
+  overflow: hidden;
 }
 
 .pink-filter {

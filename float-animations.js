@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // Create custom cursor
-  const cursor = document.createElement("div");
+  // const cursor = document.createElement("div");
   cursor.style.position = "fixed";
   cursor.style.width = "20px";
   cursor.style.height = "20px";
@@ -88,10 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const swayX = Math.sin(now * 2) * 10;
     const swayY = Math.cos(now * 1.5) * 10;
 
-    // Apply cursor movement
-    cursor.style.transform = `translate(${cursorX + swayX}px, ${
-      cursorY + swayY
-    }px)`;
+    // // Apply cursor movement
+    // cursor.style.transform = `translate(${cursorX + swayX}px, ${
+    //   cursorY + swayY
+    // }px)`;
 
     // Update each element independently
     floats.forEach((el) => {
