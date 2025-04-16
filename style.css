@@ -129,3 +129,15 @@ h1 {
     rgba(0, 0, 0, 0.1)
   );
 }
+
+.pink-filter {
+  transition: filter 4s ease-out;
+}
+
+.pink-filter:hover {
+  filter: brightness(1.05) saturate(1.25) hue-rotate(-15deg)
+    drop-shadow(0 0 8px rgba(255, 100, 200, 0.6));
+  transform: scale(1.02);
+  transition: filter 0.2s ease-in,
+    transform 1.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
