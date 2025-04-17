@@ -1,104 +1,185 @@
-* {
+/* Global Reset and Responsive Base */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  /* Responsive base font-size */
+  font-size: clamp(14px, 1.2vw, 22px);
+  scroll-behavior: smooth;
+  height: 100%;
+}
 body {
   font-family: "Fredoka", sans-serif;
   color: whitesmoke;
   text-align: center;
   background-color: black;
+  min-height: 100%;
+  line-height: 1.6;
 }
-
+/* Sketch Container */
 #sketch-container {
   width: 100%;
+  /* Use min-height to adapt when canvas loads */
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
-
-canvas {
-  /* Optional: no stretching */
-  display: block;
-  max-width: 100vw;
-}
-
-h1 {
-  font-family: "Gloria Hallelujah", cursive;
-  font-size: 5rem;
-  margin-top: 10rem;
-  color: #ff4081;
-  max-width: 100vw;
-  overflow: hidden;
-}
-
-.section {
-  max-width: 85vw;
-  height: 100vh;
-  margin: 4rem auto;
-  padding: 0 1rem;
-  font-size: 1.2rem;
-  line-height: 1.6;
+.scroll-down {
+  position: absolute;
+  bottom: 5vh;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  color: whitesmoke;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease-out;
+}
+@keyframes scrolldownanimate {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(1rem);
+  }
 }
 
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+#sketch-container .scroll-down {
+  animation: scrolldownanimate 2s ease-in-out infinite alternate;
+}
+canvas {
+  width: 100%;
+  height: 100vh;
+  max-width: 100vw;
+}
+
+/* Heading */
+h1 {
+  font-family: "Gloria Hallelujah", cursive;
+  /* Clamp font-size between 2rem and 5rem based on viewport width */
+  font-size: clamp(2rem, 8vw, 5rem);
+  /* Responsive top margin */
+  margin-top: clamp(2rem, 10vw, 10rem);
+  color: #ff4081;
+  max-width: 100vw;
+}
+
+/* Sections */
+.section {
+  width: min(85vw, 1200px);
+  /* Let content flow; ensure at least fill viewport */
+  min-height: 100vh;
+  margin: 4rem auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Image Grid */
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
   padding: 5vw;
   width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
+/* Tweaks for smaller screens */
+@media (min-width: 768px) {
+  .section {
+    padding: 2rem 1rem;
+  }
+  .image-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    padding: 4vw;
+  }
+}
+
+/* Cap columns on very large screens */
+@media (min-width: 1300px) {
+  .image-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Grid Items */
 .grid-item {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 1rem;
   box-shadow: 0 6px 20px rgba(255, 11, 182, 0.068);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .grid-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Footer */
 .footer {
-  padding-block: 4rem;
+  width: 100%;
+  /* Responsive vertical padding */
+  padding-block: clamp(2rem, 5vw, 4rem);
   font-style: italic;
   font-weight: 100;
   color: whitesmoke;
-  /* From botton to top gradient */
+  /* From bottom to top gradient */
   background: linear-gradient(
     to top,
     rgba(255, 0, 221, 0.082),
     rgba(0, 0, 0, 0.1)
   );
-  width: 100%;
   overflow: hidden;
+  text-align: center;
 }
 
+/* Pink Filter Hover Effect */
 .pink-filter {
-  transition: filter 4s ease-out;
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
 }
-
 .pink-filter:hover {
   filter: brightness(1.05) saturate(1.25) hue-rotate(-15deg)
     drop-shadow(0 0 8px rgba(255, 100, 200, 0.6));
   transform: scale(1.02);
   transition: filter 0.2s ease-in,
-    transform 1.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+/* Message Text */
+.message {
+  font-family: "Caveat", cursive;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: whitesmoke;
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 85vw;
+  line-height: 1.6;
 }
