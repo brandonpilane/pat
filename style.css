@@ -94,6 +94,7 @@ h1 {
   justify-content: center;
   text-align: center;
   font-size: 1rem;
+  position: relative;
 }
 
 /* Image Grid */
@@ -182,4 +183,27 @@ h1 {
   padding: 0 1rem;
   max-width: 85vw;
   line-height: 1.6;
+}
+
+.icons {
+  max-width: 5rem;
+  aspect-ratio: 1;
+  /* position: absolute;  */
+  transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease,
+    rotate 0.3s ease-in-out, scale 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform;
+  &:hover {
+    scale: 1.24;
+  }
+}
+
+.white {
+  filter: invert(1) brightness(1.05) saturate(1.25) hue-rotate(-15deg)
+    drop-shadow(0 0 4px rgba(255, 100, 200, 0.6));
+}
+
+.svgs-grid {
+  transition: all 0.5s ease-in-out;
+  width: 100%;
+  padding-inline: 20vw;
 }
